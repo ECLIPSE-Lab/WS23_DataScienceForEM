@@ -29,33 +29,28 @@ execute:
 <h3> 2023 </h3>
 <br>
 
-<h3>  &nbsp; [https://github.com/ECLIPSE-Lab/SS23_DataScienceForEM](https://github.com/ECLIPSE-Lab/SS23_DataScienceForEM)
+<h3>  &nbsp; [https://github.com/ECLIPSE-Lab/WS23_DataScienceForEM](https://github.com/ECLIPSE-Lab/WS23_DataScienceForEM)
 
 ## Data Manipulation
 :label:`sec_ndarray`
 
-In order to get anything done, 
-we need some way to store and manipulate data.
+- need some way to store and manipulate data.
 Generally, there are two important things 
 we need to do with data: 
 (i) acquire them; 
-and (ii) process them once they are inside the computer. 
-There is no point in acquiring data 
-without some way to store it, 
-so to start, let's get our hands dirty
+(ii) process them
+
+- let's get our hands dirty
 with $n$-dimensional arrays, 
 which we also call *tensors*.
-If you already know the NumPy 
-scientific computing package, 
-this will be a breeze.
-For all modern deep learning frameworks,
+- For all modern deep learning frameworks,
 the *tensor class* (`ndarray` in MXNet, 
 `Tensor` in PyTorch and TensorFlow) 
 resembles NumPy's `ndarray`,
 with a few killer features added.
-First, the tensor class
+- First, the tensor class
 supports automatic differentiation.
-Second, it leverages GPUs
+- Second, it leverages GPUs
 to accelerate numerical computation,
 whereas NumPy only runs on CPUs.
 These properties make neural networks
@@ -63,19 +58,14 @@ both easy to code and fast to run.
 
 
 
-## Getting Started
+## Getting Started 1
 
 
 
 (**To start, we import the PyTorch library.
 Note that the package name is `torch`.**)
 
-
-
-
-
 ```{.python .input}
-%%tab pytorch
 import torch
 ```
 
@@ -85,10 +75,7 @@ With two axes, a tensor is called a *matrix*.
 With $k > 2$ axes, we drop the specialized names
 and just refer to the object as a $k^\mathrm{th}$ *order tensor*.
 
-
-
-:begin_tab:`pytorch`
-PyTorch provides a variety of functions 
+- PyTorch provides a variety of functions 
 for creating new tensors 
 prepopulated with values. 
 For example, by invoking `arange(n)`,
@@ -96,45 +83,30 @@ we can create a vector of evenly spaced values,
 starting at 0 (included) 
 and ending at `n` (not included).
 By default, the interval size is $1$.
-Unless otherwise specified, 
+- Unless otherwise specified, 
 new tensors are stored in main memory 
 and designated for CPU-based computation.
-:end_tab:
 
 
+## Getting Started 2
 
 
 
 ```{.python .input}
-%%tab pytorch
 x = torch.arange(12, dtype=torch.float32)
 x
 ```
 
 
-
-
-
-
-
-:begin_tab:`pytorch`
-Each of these values is called
+-Each of these values is called
 an *element* of the tensor.
 The tensor `x` contains 12 elements.
 We can inspect the total number of elements 
 in a tensor via its `numel` method.
-:end_tab:
-
-
-
-
 
 ```{.python .input}
-%%tab pytorch
 x.numel()
 ```
-
-
 
 (**We can access a tensor's *shape***) 
 (the length along each axis)
@@ -144,7 +116,6 @@ the `shape` contains just a single element
 and is identical to the size.
 
 ```{.python .input}
-
 x.shape
 ```
 
@@ -161,11 +132,10 @@ are laid out one row at a time and thus
 `x[3] == X[0, 3]`.
 
 ```{.python .input}
-%%tab mxnet, pytorch, jax
 X = x.reshape(3, 4)
 X
 ```
-
+## Getting Started 3
 Note that specifying every shape component
 to `reshape` is redundant.
 Because we already know our tensor's size,

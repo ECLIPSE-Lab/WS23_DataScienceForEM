@@ -421,33 +421,49 @@ Philipp Pelz
 </h3>
 <p><br></p>
 <h3>
-<p>&nbsp; <a href="https://github.com/ECLIPSE-Lab/SS23_DataScienceForEM">https://github.com/ECLIPSE-Lab/SS23_DataScienceForEM</a></p>
+<p>&nbsp; <a href="https://github.com/ECLIPSE-Lab/WS23_DataScienceForEM">https://github.com/ECLIPSE-Lab/WS23_DataScienceForEM</a></p>
 </h3></section>
 <section id="data-manipulation" class="slide level2">
 <h2>Data Manipulation</h2>
 <p>:label:<code>sec_ndarray</code></p>
-<p>In order to get anything done, we need some way to store and manipulate data. Generally, there are two important things we need to do with data: (i) acquire them; and (ii) process them once they are inside the computer. There is no point in acquiring data without some way to store it, so to start, let’s get our hands dirty with <span class="math inline">\(n\)</span>-dimensional arrays, which we also call <em>tensors</em>. If you already know the NumPy scientific computing package, this will be a breeze. For all modern deep learning frameworks, the <em>tensor class</em> (<code>ndarray</code> in MXNet, <code>Tensor</code> in PyTorch and TensorFlow) resembles NumPy’s <code>ndarray</code>, with a few killer features added. First, the tensor class supports automatic differentiation. Second, it leverages GPUs to accelerate numerical computation, whereas NumPy only runs on CPUs. These properties make neural networks both easy to code and fast to run.</p>
+<ul>
+<li>need some way to store and manipulate data. Generally, there are two important things we need to do with data:</li>
+</ul>
+<ol type="i">
+<li>acquire them;</li>
+<li>process them</li>
+</ol>
+<ul>
+<li>let’s get our hands dirty with <span class="math inline">\(n\)</span>-dimensional arrays, which we also call <em>tensors</em>.</li>
+<li>For all modern deep learning frameworks, the <em>tensor class</em> (<code>ndarray</code> in MXNet, <code>Tensor</code> in PyTorch and TensorFlow) resembles NumPy’s <code>ndarray</code>, with a few killer features added.</li>
+<li>First, the tensor class supports automatic differentiation.</li>
+<li>Second, it leverages GPUs to accelerate numerical computation, whereas NumPy only runs on CPUs. These properties make neural networks both easy to code and fast to run.</li>
+</ul>
 </section>
-<section id="getting-started" class="slide level2">
-<h2>Getting Started</h2>
+<section id="getting-started-1" class="slide level2">
+<h2>Getting Started 1</h2>
 <p>(<strong>To start, we import the PyTorch library. Note that the package name is <code>torch</code>.</strong>)</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python input number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">%%</span>tab pytorch</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> torch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python input number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> torch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>[<strong>A tensor represents a (possibly multi-dimensional) array of numerical values.</strong>] With one axis, a tensor is called a <em>vector</em>. With two axes, a tensor is called a <em>matrix</em>. With <span class="math inline">\(k &gt; 2\)</span> axes, we drop the specialized names and just refer to the object as a <span class="math inline">\(k^\mathrm{th}\)</span> <em>order tensor</em>.</p>
-<p>:begin_tab:<code>pytorch</code> PyTorch provides a variety of functions for creating new tensors prepopulated with values. For example, by invoking <code>arange(n)</code>, we can create a vector of evenly spaced values, starting at 0 (included) and ending at <code>n</code> (not included). By default, the interval size is <span class="math inline">\(1\)</span>. Unless otherwise specified, new tensors are stored in main memory and designated for CPU-based computation. :end_tab:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python input number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="op">%%</span>tab pytorch</span>
-<span id="cb2-2"><a href="#cb2-2"></a>x <span class="op">=</span> torch.arange(<span class="dv">12</span>, dtype<span class="op">=</span>torch.float32)</span>
-<span id="cb2-3"><a href="#cb2-3"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>:begin_tab:<code>pytorch</code> Each of these values is called an <em>element</em> of the tensor. The tensor <code>x</code> contains 12 elements. We can inspect the total number of elements in a tensor via its <code>numel</code> method. :end_tab:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python input number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="op">%%</span>tab pytorch</span>
-<span id="cb3-2"><a href="#cb3-2"></a>x.numel()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>PyTorch provides a variety of functions for creating new tensors prepopulated with values. For example, by invoking <code>arange(n)</code>, we can create a vector of evenly spaced values, starting at 0 (included) and ending at <code>n</code> (not included). By default, the interval size is <span class="math inline">\(1\)</span>.</li>
+<li>Unless otherwise specified, new tensors are stored in main memory and designated for CPU-based computation.</li>
+</ul>
+</section>
+<section id="getting-started-2" class="slide level2">
+<h2>Getting Started 2</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python input number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>x <span class="op">=</span> torch.arange(<span class="dv">12</span>, dtype<span class="op">=</span>torch.float32)</span>
+<span id="cb2-2"><a href="#cb2-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>-Each of these values is called an <em>element</em> of the tensor. The tensor <code>x</code> contains 12 elements. We can inspect the total number of elements in a tensor via its <code>numel</code> method.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python input number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>x.numel()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>(<strong>We can access a tensor’s <em>shape</em></strong>) (the length along each axis) by inspecting its <code>shape</code> attribute. Because we are dealing with a vector here, the <code>shape</code> contains just a single element and is identical to the size.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python input number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a></span>
-<span id="cb4-2"><a href="#cb4-2"></a>x.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python input number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>x.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We can [<strong>change the shape of a tensor without altering its size or values</strong>], by invoking <code>reshape</code>. For example, we can transform our vector <code>x</code> whose shape is (12,) to a matrix <code>X</code> with shape (3, 4). This new tensor retains all elements but reconfigures them into a matrix. Notice that the elements of our vector are laid out one row at a time and thus <code>x[3] == X[0, 3]</code>.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python input number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="op">%%</span>tab mxnet, pytorch, jax</span>
-<span id="cb5-2"><a href="#cb5-2"></a>X <span class="op">=</span> x.reshape(<span class="dv">3</span>, <span class="dv">4</span>)</span>
-<span id="cb5-3"><a href="#cb5-3"></a>X</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python input number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>X <span class="op">=</span> x.reshape(<span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb5-2"><a href="#cb5-2"></a>X</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="getting-started-3" class="slide level2">
+<h2>Getting Started 3</h2>
 <p>Note that specifying every shape component to <code>reshape</code> is redundant. Because we already know our tensor’s size, we can work out one component of the shape given the rest. For example, given a tensor of size <span class="math inline">\(n\)</span> and target shape (<span class="math inline">\(h\)</span>, <span class="math inline">\(w\)</span>), we know that <span class="math inline">\(w = n/h\)</span>. To automatically infer one component of the shape, we can place a <code>-1</code> for the shape component that should be inferred automatically. In our case, instead of calling <code>x.reshape(3, 4)</code>, we could have equivalently called <code>x.reshape(-1, 4)</code> or <code>x.reshape(3, -1)</code>.</p>
 <p>Practitioners often need to work with tensors initialized to contain all zeros or ones. [<strong>We can construct a tensor with all elements set to zero</strong>] (<del>or one</del>) and a shape of (2, 3, 4) via the <code>zeros</code> function.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python input number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="op">%%</span>tab pytorch</span>
