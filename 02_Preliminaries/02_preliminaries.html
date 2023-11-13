@@ -464,7 +464,11 @@ Philipp Pelz
 </section>
 <section id="getting-started-3" class="slide level2">
 <h2>Getting Started 3</h2>
-<p>Note that specifying every shape component to <code>reshape</code> is redundant. Because we already know our tensor’s size, we can work out one component of the shape given the rest. For example, given a tensor of size <span class="math inline">\(n\)</span> and target shape (<span class="math inline">\(h\)</span>, <span class="math inline">\(w\)</span>), we know that <span class="math inline">\(w = n/h\)</span>. To automatically infer one component of the shape, we can place a <code>-1</code> for the shape component that should be inferred automatically. In our case, instead of calling <code>x.reshape(3, 4)</code>, we could have equivalently called <code>x.reshape(-1, 4)</code> or <code>x.reshape(3, -1)</code>.</p>
+<ul>
+<li><p>specifying every shape component to <code>reshape</code> is redundant.</p></li>
+<li><p>Because we already know our tensor’s size, we can work out one component of the shape given the rest. For example, given a tensor of size <span class="math inline">\(n\)</span> and target shape (<span class="math inline">\(h\)</span>, <span class="math inline">\(w\)</span>), we know that <span class="math inline">\(w = n/h\)</span>.</p></li>
+<li><p>To automatically infer one component of the shape, we can place a <code>-1</code> for the shape component that should be inferred automatically. In our case, instead of calling <code>x.reshape(3, 4)</code>, we could have equivalently called <code>x.reshape(-1, 4)</code> or <code>x.reshape(3, -1)</code>.</p></li>
+</ul>
 <p>Practitioners often need to work with tensors initialized to contain all zeros or ones. [<strong>We can construct a tensor with all elements set to zero</strong>] (<del>or one</del>) and a shape of (2, 3, 4) via the <code>zeros</code> function.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python input number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="op">%%</span>tab pytorch</span>
 <span id="cb6-2"><a href="#cb6-2"></a>torch.zeros((<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

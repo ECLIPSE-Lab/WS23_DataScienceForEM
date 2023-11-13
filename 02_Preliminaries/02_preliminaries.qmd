@@ -136,14 +136,16 @@ X = x.reshape(3, 4)
 X
 ```
 ## Getting Started 3
-Note that specifying every shape component
+- specifying every shape component
 to `reshape` is redundant.
-Because we already know our tensor's size,
+
+- Because we already know our tensor's size,
 we can work out one component of the shape given the rest.
 For example, given a tensor of size $n$
 and target shape ($h$, $w$),
 we know that $w = n/h$.
-To automatically infer one component of the shape,
+
+- To automatically infer one component of the shape,
 we can place a `-1` for the shape component
 that should be inferred automatically.
 In our case, instead of calling `x.reshape(3, 4)`,
@@ -154,14 +156,9 @@ initialized to contain all zeros or ones.
 [**We can construct a tensor with all elements set to zero**] (~~or one~~)
 and a shape of (2, 3, 4) via the `zeros` function.
 
-
-
 ```{.python .input}
-%%tab pytorch
 torch.zeros((2, 3, 4))
 ```
-
-
 Similarly, we can create a tensor 
 with all ones by invoking `ones`.
 
